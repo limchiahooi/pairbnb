@@ -1,0 +1,43 @@
+
+
+ <div align= "right" style="margin: 0px 15px 0px 0px">
+    <%= will_paginate @listings %>
+ </div>
+
+<div class="col-md-12">
+
+	<% @listings.each_slice(4) do |listings| %>
+		<div class='row'>
+			<% listings.each do |listing| %>
+		  		<div class="col-md-3">
+		      
+					<div class="well">
+
+						<h4><%= link_to listing.name, user_listing_path(listing.user, listing) %></h4>
+						<p>Location: <%= listing.country %>, <%= listing.city %></p>
+						<p>Description: <%= listing.description %></p>
+
+					</div>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
+</div>
+
+
+</div>
+
+
+
+      
+   
+
+
+
+<% if false %>
+code to comment
+
+<div class="footer">
+<%= paginate @listings %>
+</div>
+<% end %>

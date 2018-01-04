@@ -1,0 +1,13 @@
+  <h2>Create a new listing / Become a Host</h2>
+
+  <%= form_for @listing do |form| %>
+    <%= render partial: '/listings/form', object: form %>
+
+    <div class="submit-field">
+      <%= form.submit "Create a new listing / Become a Host" %>
+    </div>
+<br>
+    <div class="other-links">
+       <%= link_to 'Back', root_path %>
+    </div>
+<% end %>

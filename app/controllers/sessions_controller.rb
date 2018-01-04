@@ -20,4 +20,14 @@
       sign_in(user)
       redirect_to @next, :notice => @notice
     end
+
+
+    def url_after_destroy
+      root_url
+    end
+
+
+
+
+
   end

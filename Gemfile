@@ -24,6 +24,8 @@ gem "clearance"
 gem "figaro"
 gem "omniauth"
 gem "omniauth-facebook"
+## Gemfile for Rails 3+, Sinatra, or Merb
+gem 'will_paginate', '~> 3.1.1'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
