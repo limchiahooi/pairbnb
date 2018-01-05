@@ -46,6 +46,13 @@
 
       <li><% if signed_in? %>    
 
+
+      <a >Welcome, <%= current_user.email %></a></li>
+
+
+      <li>
+
+
 <%= link_to "Create a new listing", "/listings/new" %>
 
 </li>

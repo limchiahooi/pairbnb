@@ -4,15 +4,21 @@
 
   		<%= form_for @listing do |form| %>
     		<%= render partial: '/listings/form', object: form %>
+        <br>
+
+
 
    			 <div class="submit-field">
-     			 <%= form.submit %>
-    		</div>
+         <div style="float: left;">
+     			 <%= form.submit "Save" %> <% end %></div>
+
+      <div><%= button_to "Cancel", :back, :method => :get, style: "margin-left: 10px" %>
+    		</div><br>
 
 
-  		<% end %>
-  </li>
+  		
+  </li><br>
     <div class="other-links">
-       <%= link_to 'Back', :back %>
-    </div>
+       <%= link_to '<< Back to Main page', root_path %>
+    </div><br>
 </div>
