@@ -24,6 +24,33 @@
 
 <p>Hosted by: <%= link_to @listing.user.email, user_path(@listing.user) %></p>
 
+
+<p>Photos: 
+
+<% if @listing.image[0].nil? %>
+There is no photo for this listing yet.</p>
+<% else %>
+
+<p><% @listing.image.each do |image| %>
+<%= image_tag image %>
+<br><br>
+	<% end %>
+</p>
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p><% if signed_in? %>
 
 

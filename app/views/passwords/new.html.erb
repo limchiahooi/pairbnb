@@ -1,7 +1,15 @@
+
+
+<div class="col-md-12">
+  <li class="list-group-item">
+
+
 <div id="clearance" class="password-reset">
   <h2><%= t(".title") %></h2>
 
   <p><%= t(".description") %></p>
+
+<br>
 
   <%= form_for :password, url: passwords_path do |form| %>
     <div class="text-field">
@@ -9,8 +17,15 @@
       <%= form.text_field :email, type: 'email' %>
     </div>
 
+<br>
+
     <div class="submit-field">
       <%= form.submit %>
     </div>
   <% end %>
+</div>
+
+
+
+</li>
 </div>

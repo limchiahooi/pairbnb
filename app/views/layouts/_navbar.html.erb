@@ -47,7 +47,7 @@
       <li><% if signed_in? %>    
 
 
-      <a >Welcome, <%= current_user.email %></a></li>
+       <%= image_tag current_user.avatar_url(:thumb).to_s, class: "img-responsive", style: "border-radius: 5px; margin: 3px" %> </li><li><%= link_to current_user.email, user_path(current_user) %></li>
 
 
       <li>

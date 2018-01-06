@@ -20,13 +20,17 @@
     <% else -%>
       <%= link_to t(".sign_in"), sign_in_path %>
     <% end -%>
-  </div>
+  </div>-->
 
-  <div id="flash">
-    <% flash.each do |key, value| -%>
-      <div id="flash_<%= key %>"><%=h value %></div>
-    <% end %>
-  </div> -->
+  
+
+<div class="col-md-12">
+<%= flash_messages %>
+</div>
+
+
+
+
 
   <%= yield %>
 </body>

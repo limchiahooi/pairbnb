@@ -1,15 +1,36 @@
+
+<div class="col-md-12">
+  <li class="list-group-item">
+
 <div id="clearance" class="sign-up">
   <h2><%= t(".title") %></h2>
 
-  <%= form_for @user do |form| %>
+  <p>It's free and always will be.</p>
+  
+<br>
+
+  <%= form_for @user, html: { multipart: true } do |form| %>
     <%= render partial: '/users/form', object: form %>
 
+
+<br>
+<p style="font-size: 90%">By clicking Sign up, you agree to our Terms and that you have read our Data Use Policy, including our Cookie Use.</p>
+
+<br>
+
     <div class="submit-field">
-      <%= form.submit %>
+      <%= form.submit class: "btn btn-success" %>
     </div>
 
+<br>
+
+
     <div class="other-links">
-      <%= link_to t(".sign_in"), sign_in_path %>
+      <%= link_to "Already have an account? Sign in here.", sign_in_path %>
     </div>
   <% end %>
+</div>
+
+
+</li>
 </div>

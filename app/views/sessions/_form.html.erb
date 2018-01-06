@@ -1,6 +1,15 @@
+
+
+
+
+
 <%= form_for :session, url: session_path do |form| %>
   <div class="text-field">
-    <%= form.label :email, "Email: " %>
+    <%= form.label :email, "Email: ", style: "width: 80px" %>
+   
+
+
+
     <%= form.text_field :email, type: 'email' %>
   </div>
 
@@ -9,16 +18,29 @@
 
 
   <div class="password-field">
-    <%= form.label :password, "Password: " %>
+    <%= form.label :password, "Password: ", style: "width: 80px" %>
+   
+
+
+
+
+
     <%= form.password_field :password %>
   </div>
+
+
+
+
+
+
+
 
 
 <br>
 
 
   <div class="submit-field">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-success" %>
   </div>
 
 
@@ -27,8 +49,10 @@
 
   <div class="other-links">
     <% if Clearance.configuration.allow_sign_up? %>
-      <%= link_to t(".sign_up"), sign_up_path %>
+      <%= link_to "New to Pairbnb? Sign up for a free acount now!", sign_up_path %>
     <% end %>
+
+    <br>
     <%= link_to t(".forgot_password"), new_password_path %>
   </div>
 <% end %>

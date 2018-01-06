@@ -27,6 +27,11 @@ gem "omniauth-facebook"
 ## Gemfile for Rails 3+, Sinatra, or Merb
 gem 'will_paginate', '~> 3.1.1'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+gem 'carrierwave', '~> 1.0'
+gem "mini_magick"
+
+
+
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

@@ -1,0 +1,61 @@
+<div class="col-md-12">
+  <li class="list-group-item">
+    <h1>Edit your profile</h1>
+
+  		<%= form_for @user, html: { multipart: true } do |form| %>
+    		
+
+
+
+
+
+<div class="text-field">
+<%= form.label :avatar, "Upload photos: " %>
+  <%= form.file_field :avatar %>
+</div>
+
+
+
+
+
+<div class="text-field">
+  <% if form.object.avatar? %>
+
+<p><b>Delete photos: </b></p>
+
+      <%= image_tag form.object.avatar.thumb.url %>
+      <%= form.label :remove_avatar, "Delete this photo"  %>
+      <%= form.check_box :remove_avatar %> 
+    <% end %>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+        
+        <br>
+
+
+
+   			 <div class="submit-field">
+         <div style="float: left;">
+     			 <%= form.submit "Save" %> <% end %></div>
+
+      <div><%= button_to "Cancel", :back, :method => :get, style: "margin-left: 10px" %>
+    		</div><br>
+
+
+  		
+  </li><br>
+    <div class="other-links">
+       <%= link_to '<< Back to Main page', root_path %>
+    </div><br>
+</div>

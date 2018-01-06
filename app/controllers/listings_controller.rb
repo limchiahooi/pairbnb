@@ -17,7 +17,7 @@ class ListingsController < ApplicationController
 
 	def create
 		#use singular @listing coz only create one listing
-		@listing = Listing.new(params.require(:listing).permit(:name, :place_type, :property_type, :room_number, :bed_number, :guest_number, :country, :state, :city, :zipcode, :address, :price, :description))
+		@listing = Listing.new(params.require(:listing).permit(:name, :place_type, :property_type, :room_number, :bed_number, :guest_number, :country, :state, :city, :zipcode, :address, :price, :description, {image: []}, :remove_image))
 	   @listing.user_id = current_user.id if current_user
 	     if @listing.save
 	       redirect_to @listing
@@ -42,7 +42,7 @@ class ListingsController < ApplicationController
 
 	def update
 	    @listing = Listing.find(params[:id])
-	    @listing.update(params.require(:listing).permit(:name, :place_type, :property_type, :room_number, :bed_number, :guest_number, :country, :state, :city, :zipcode, :address, :price, :description))
+	    @listing.update(params.require(:listing).permit(:name, :place_type, :property_type, :room_number, :bed_number, :guest_number, :country, :state, :city, :zipcode, :address, :price, :description, {image: []}, :remove_image))
 	    redirect_to @listing
 	end 
 

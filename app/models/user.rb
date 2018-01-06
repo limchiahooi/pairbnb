@@ -9,6 +9,11 @@ enum role: [:customer, :moderator, :superadmin]
 
  has_many :authentications, dependent: :destroy
 
+
+  mount_uploader :avatar, AvatarUploader
+
+ 
+
     def self.create_with_auth_and_hash(authentication, auth_hash)
       user = self.create!(
        password: SecureRandom.hex(10),

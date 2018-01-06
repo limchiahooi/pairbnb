@@ -1,9 +1,40 @@
+
+
+
+
+
 <div class="text-field">
-  <%= form.label :email %>
+ 
+  <%= form.label :email, "Email: ", style: "width: 80px" %>
+
+
+
   <%= form.text_field :email, type: 'email' %>
 </div>
 
+
+
+
+<br>
+
+
 <div class="password-field">
-  <%= form.label :password %>
+
+
+  <%= form.label :password, "Password: ", style: "width: 80px" %>
+
+
+
   <%= form.password_field :password %>
 </div>
+
+<br>
+
+
+<div class="text-field">
+<%= form.label :avatar, "Upload photos: " %>
+  <%= form.file_field :avatar %>
+</div>
+
+
+

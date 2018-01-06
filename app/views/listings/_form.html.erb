@@ -115,3 +115,34 @@
   <%= form.text_area :description %>
 </div>
 
+
+<br>
+
+
+<div class="text-field">
+<%= form.label :image, "Upload photos: " %>
+  <%= form.file_field :image, multiple: true %>
+</div>
+
+
+<br>
+
+
+<div class="text-field">
+  <% if form.object.image? %>
+
+<p><b>Delete photos: </b></p>
+
+
+<% @listing.image.each do |image| %>
+
+      <%= image_tag image.thumb.url %>
+      <%= form.label :remove_image, "Delete this photo" %>
+      <%= form.check_box :remove_image %>
+      <br><br>
+
+<% end %>
+
+<% end %>
+
+</div>
