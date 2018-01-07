@@ -32,7 +32,7 @@ There is no photo for this listing yet.</p>
 <% else %>
 
 <p><% @listing.image.each do |image| %>
-<%= image_tag image %>
+<%= image_tag image, class: "img-responsive", style: "border-radius: 3px;"  %>
 <br><br>
 	<% end %>
 </p>
@@ -58,6 +58,10 @@ There is no photo for this listing yet.</p>
 <% if current_user && ((current_user.id == @listing.user.id) || current_user.superadmin?) %>
 <%= link_to 'Edit listing', edit_user_listing_path(current_user, @listing), class: "btn btn-primary" %></p>
 <p><%= link_to 'Delete listing', user_listing_path(current_user, @listing), method: :delete, data: {confirm: 'Are you sure you want to delete this listing?'}, class: "btn btn-primary" %>
+
+
+
+
 
 <% end %>
 </p>

@@ -1,46 +1,39 @@
 <div class="col-md-12">
   <li class="list-group-item">
     <h1>Edit your profile</h1>
-
+<br>
   		<%= form_for @user, html: { multipart: true } do |form| %>
     		
-
-
-
-
-
-<div class="text-field">
-<%= form.label :avatar, "Upload photos: " %>
-  <%= form.file_field :avatar %>
-</div>
-
-
-
-
 
 <div class="text-field">
   <% if form.object.avatar? %>
 
-<p><b>Delete photos: </b></p>
+<p><b>Your profile photo: </b></p>
 
-      <%= image_tag form.object.avatar.thumb.url %>
-      <%= form.label :remove_avatar, "Delete this photo"  %>
+      <%= image_tag form.object.avatar.url, Style: "width: 200px; height: 200px;" %>
+      <%= form.label :remove_avatar, "Delete"  %>
       <%= form.check_box :remove_avatar %> 
     <% end %>
 
     </div>
 
+<br><br>
+
+
+<div class="text-field">
+<%= form.label :avatar, "Upload profile photo: " %>
+<p>You can only have ONE profile photo, any new upload will overwrite your existing profile photo.</p>
+  <%= form.file_field :avatar %>
+</div>
+
+
+<br><br>
 
 
 
 
 
 
-
-
-
-
-        
         <br>
 
 

@@ -13,7 +13,7 @@
 		      
 					<div class="well">
 
-						<p><%= image_tag listing.image[0].to_s, class: "img-responsive", style: "border-radius: 5px;" %></p>
+						<p><%= image_tag listing.image[0].to_s, class: "img-responsive", style: "border-radius: 3px; " %></p>
 
 						<h4><%= link_to listing.name, user_listing_path(listing.user, listing) %></h4>
 						<p>Location: <%= listing.country %>, <%= listing.city %></p>

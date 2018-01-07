@@ -1,24 +1,191 @@
 <div class="col-md-12">
   <li class="list-group-item">
     <h1>Edit your listing</h1>
-
-  		<%= form_for @listing, html: { multipart: true } do |form| %>
-    		<%= render partial: '/listings/form', object: form %>
-        <br>
-
+<br>
+  		<%= form_for @listing do |form| %>
+    	  
 
 
-   			 <div class="submit-field">
+
+<div class="text-field">
+<%= form.label :name, "Name:" %>
+  <%= form.text_field :name %>
+</div>
+
+
+<br>
+
+
+<div class="text-field">
+<%= form.label :place_type, "Place type: " %>
+  <%= form.text_field :place_type %>
+</div>
+
+
+<br>
+
+
+<div class="text-field">
+<%= form.label :property_type, "Property type: " %>
+  <%= form.text_field :property_type %>
+</div>
+
+
+<br>
+
+
+<div class="text-field">
+<%= form.label :room_number, "Room number: " %>
+  <%= form.number_field :room_number, min: "0"%>
+</div>
+
+
+<br>
+
+
+<div class="text-field">
+<%= form.label :bed_number, "Bed number: " %>
+  <%= form.number_field :bed_number, min: "0" %>
+</div>
+
+
+<br>
+
+
+<div class="text-field">
+<%= form.label :guest_number, "Guest number: " %>
+  <%= form.number_field :guest_number, min: "0" %>
+</div>
+
+
+<br>
+
+
+<div class="text-field">
+<%= form.label :country, "Country: " %>
+  <%= form.text_field :country %>
+</div>
+
+
+<br>
+
+
+
+<div class="text-field">
+<%= form.label :state, "State: " %>
+  <%= form.text_field :state %>
+</div>
+
+
+<br>
+
+
+<div class="text-field">
+<%= form.label :city, "City: " %>
+  <%= form.text_field :city %>
+</div>
+
+
+<br>
+
+
+<div class="text-field">
+<%= form.label :zipcode, "Zipcode: " %>
+  <%= form.number_field :zipcode %>
+</div>
+
+
+<br>
+
+
+<div class="text-field">
+<%= form.label :address, "Address: " %>
+  <%= form.text_field :address %>
+</div>
+
+
+<br>
+
+
+<div class="text-field">
+<%= form.label :price, "Price: " %>
+  <%= form.number_field :price, min: "0" %>
+</div>
+
+
+<br>
+
+
+<div class="text-field">
+<%= form.label :description, "Description: " %>
+  <%= form.text_area :description %>
+</div>
+
+
+
+
+<br>
+
+
+         <div class="submit-field">
          <div style="float: left;">
-     			 <%= form.submit "Save" %> <% end %></div>
+           <%= form.submit "Save" %> <% end %></div>
 
       <div><%= button_to "Cancel", :back, :method => :get, style: "margin-left: 10px" %>
-    		</div><br>
+        </div>    
+<br>
 
 
-  		
-  </li><br>
-    <div class="other-links">
-       <%= link_to '<< Back to Main page', root_path %>
-    </div><br>
+
+<hr>
+<br>
+
+
+<div class="text-field">
+  <% if @listing.image.present? %>
+
+<h3><b>Delete photos: </b></h3>
+
+
+<% @listing.image.each_with_index do |img, index| %>
+
+      <%= image_tag(img.thumb.url) %>
+      <%= link_to "Delete", listing_image_path(@listing, index), :method => :delete, data: { confirm: "Are you sure you want to delete this photo?" } %>
+      
+      <br><br>
+
+<% end %>
+
+
+<% end %>
+
+</div>
+
+
+<br>
+<h3> Add more photos</h3>
+
+<%= form_for @listing, url: listing_image_index_path(@listing), method: :post do |form| %>
+  <%= form.file_field :image, multiple: true %><br>
+  <%= form.submit "Add More Images" %>
+  <% end %>
+
+
+
+<br>
+
+</div>
+
+
+
+
+
+</li>
+
+<br>
+<div class="other-links">
+       <%= link_to '<< Back to Main page', root_path %> 
+    </div>
+<br>
+
 </div>

@@ -27,6 +27,13 @@ end
    resources :listings
 
 
+ resources :listings do
+    resources :image, :only => [:create, :destroy] # support #create and #destroy
+  end
+
+
+
+
 post "/users/:user_id/listings/:id/verify" => "listings#verify"
 post "/users/:user_id/listings/:id/unverify" => "listings#unverify"
 
