@@ -1,6 +1,6 @@
 <div class="col-md-12">
-<ul class="list-group">
-  <li class="list-group-item">
+<div class="list-group">
+  <div class="list-group-item">
 
 <h1><%= @user.email %></h1>
 
@@ -50,15 +50,31 @@ No profile photo available.</p>
 <br>
 
 
-</li>
+</div>
 
 
-  <li class="list-group-item">
+
+
+
+
+
+  <div class="list-group-item">
 
 
 <h3>My Listings</h3>
 
-<% @user.listings.each do |listing| %>
+
+
+<div align= "right" style="margin: 0px 15px 0px 0px">
+
+    <%= will_paginate @filter %>
+    </div>
+
+
+
+	<% @user.listings.each_slice(4) do |listings| %>
+		<div class='row'>
+			<% listings.each do |listing| %>
 		  		<div class="col-md-3">
 		      
 					<div class="well">
@@ -72,13 +88,25 @@ No profile photo available.</p>
 					</div>
 				</div>
 			<% end %>
-		
+		</div>
+	<% end %>
+</div>
+
+
+</div>
 
 
 
 
 
-</li>
+
+
+
+
+
+
+
+
 <br>
 
 

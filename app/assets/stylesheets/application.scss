@@ -15,3 +15,10 @@
 @import "bootstrap";
 @import "listings";
 @import "page";
+
+
+.navbar .navbar-nav > li.open > a:hover,
+.navbar .navbar-nav > li.open > a:focus {
+  background-color: #8b9dc3;
+  color: #fff;
+}
