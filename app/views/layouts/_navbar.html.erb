@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default", style="color: #ffffff; background-color: #3b5998;">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -8,16 +8,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Pairbnb</a>
+      <a class="navbar-brand" href="/" style="color: white"><b>Pairbnb</a></b>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
+        <li class="active"><a href="#">Logo <span class="sr-only">(current)</span></a></li>
+        <li><a href="/" style="color: white">Home</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white">My reservations <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -47,18 +47,18 @@
       <li><% if signed_in? %>    
 
 
-       <%= image_tag current_user.avatar_url(:thumb).to_s, class: "img-responsive", style: "border-radius: 5px; margin: 3px" %> </li><li><%= link_to current_user.email, user_path(current_user) %></li>
+       <%= image_tag current_user.avatar_url(:thumb).to_s, class: "img-responsive", style: "border-radius: 20px; margin: 3px" %> </li><li><%= link_to current_user.email, user_path(current_user), Style: "color:white" %></li>
 
 
       <li>
 
 
-<%= link_to "Create a new listing", "/listings/new" %>
+<%= link_to "Create a new listing", "/listings/new", Style: "color:white" %>
 
 </li>
 <li>
   
-<%= link_to "Sign out", sign_out_path, method: :delete %>
+<%= link_to "Sign out", sign_out_path, method: :delete, Style: "color:white"  %>
 </li>
 
 
@@ -66,20 +66,20 @@
 
     <% else -%>
     <li>
-      <%= link_to "Sign In", sign_in_path %>
+      <%= link_to "Sign In", sign_in_path, Style: "color:white" %>
     
        </li>
-       <li><%= link_to "Sign in with Facebook", "/auth/facebook" %></li>
+       <li><%= link_to "Sign in with Facebook", "/auth/facebook", Style: "color:white" %></li>
 
 
-       <li> <%= link_to "Register a new account", sign_up_path %></li>
+       <li> <%= link_to "Register a new account", sign_up_path, Style: "color:white" %></li>
         
 <% end -%>
 
 
 
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false", style="color:white" >Settings <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>

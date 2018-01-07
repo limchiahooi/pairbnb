@@ -8,7 +8,7 @@
 
 
 <div class="text-field">
-<%= form.label :name, "Name:" %>
+<%= form.label :name, "Name: ", style: "width: 120px" %>
   <%= form.text_field :name %>
 </div>
 
@@ -17,7 +17,7 @@
 
 
 <div class="text-field">
-<%= form.label :place_type, "Place type: " %>
+<%= form.label :place_type, "Place type: ", style: "width: 120px" %>
   <%= form.text_field :place_type %>
 </div>
 
@@ -26,7 +26,7 @@
 
 
 <div class="text-field">
-<%= form.label :property_type, "Property type: " %>
+<%= form.label :property_type, "Property type: ", style: "width: 120px" %>
   <%= form.text_field :property_type %>
 </div>
 
@@ -35,7 +35,7 @@
 
 
 <div class="text-field">
-<%= form.label :room_number, "Room number: " %>
+<%= form.label :room_number, "Room number: ", style: "width: 120px" %>
   <%= form.number_field :room_number, min: "0"%>
 </div>
 
@@ -44,7 +44,7 @@
 
 
 <div class="text-field">
-<%= form.label :bed_number, "Bed number: " %>
+<%= form.label :bed_number, "Bed number: ", style: "width: 120px" %>
   <%= form.number_field :bed_number, min: "0" %>
 </div>
 
@@ -53,7 +53,7 @@
 
 
 <div class="text-field">
-<%= form.label :guest_number, "Guest number: " %>
+<%= form.label :guest_number, "Guest number: ", style: "width: 120px" %>
   <%= form.number_field :guest_number, min: "0" %>
 </div>
 
@@ -62,7 +62,7 @@
 
 
 <div class="text-field">
-<%= form.label :country, "Country: " %>
+<%= form.label :country, "Country: ", style: "width: 120px" %>
   <%= form.text_field :country %>
 </div>
 
@@ -72,7 +72,7 @@
 
 
 <div class="text-field">
-<%= form.label :state, "State: " %>
+<%= form.label :state, "State: ", style: "width: 120px" %>
   <%= form.text_field :state %>
 </div>
 
@@ -81,7 +81,7 @@
 
 
 <div class="text-field">
-<%= form.label :city, "City: " %>
+<%= form.label :city, "City: ", style: "width: 120px" %>
   <%= form.text_field :city %>
 </div>
 
@@ -90,7 +90,7 @@
 
 
 <div class="text-field">
-<%= form.label :zipcode, "Zipcode: " %>
+<%= form.label :zipcode, "Zipcode: ", style: "width: 120px" %>
   <%= form.number_field :zipcode %>
 </div>
 
@@ -99,7 +99,7 @@
 
 
 <div class="text-field">
-<%= form.label :address, "Address: " %>
+<%= form.label :address, "Address: ", style: "width: 120px" %>
   <%= form.text_field :address %>
 </div>
 
@@ -108,7 +108,7 @@
 
 
 <div class="text-field">
-<%= form.label :price, "Price: " %>
+<%= form.label :price, "Price: ", style: "width: 120px" %>
   <%= form.number_field :price, min: "0" %>
 </div>
 
@@ -117,7 +117,7 @@
 
 
 <div class="text-field">
-<%= form.label :description, "Description: " %>
+<%= form.label :description, "Description: ", style: "width: 120px" %>
   <%= form.text_area :description %>
 </div>
 
@@ -166,11 +166,13 @@
 <h3> Add more photos</h3>
 
 <%= form_for @listing, url: listing_image_index_path(@listing), method: :post do |form| %>
-  <%= form.file_field :image, multiple: true %><br>
-  <%= form.submit "Add More Images" %>
+  <%= form.file_field :image, multiple: true, id: "fileupload" %><br>
+  <%= form.submit "Add more photos" %>
   <% end %>
 
 
+<br>
+<div id="dvPreview"></div>
 
 <br>
 
@@ -189,3 +191,39 @@
 <br>
 
 </div>
+
+
+
+<script>
+
+ $(function () {
+    $("#fileupload").change(function () {
+        if (typeof (FileReader) != "undefined") {
+            var dvPreview = $("#dvPreview");
+            dvPreview.html("");
+            var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+            $($(this)[0].files).each(function () {
+                var file = $(this);
+                if (regex.test(file[0].name.toLowerCase())) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var img = $("<img />");
+                        img.attr("style", "height:100px;width: 100px;margin:5px");
+                        img.attr("src", e.target.result);
+                        dvPreview.append(img);
+                    }
+                    reader.readAsDataURL(file[0]);
+                } else {
+                    alert(file[0].name + " is not a valid image file.");
+                    dvPreview.html("");
+                    return false;
+                }
+            });
+        } else {
+            alert("This browser does not support HTML5 FileReader.");
+        }
+    });
+});
+
+
+</script>
