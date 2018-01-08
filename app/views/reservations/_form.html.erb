@@ -1,0 +1,42 @@
+
+<%= form_for [@listing, @reservation] do |form| %>
+
+    <% if @error.present? %>
+    <div class="well" style="background-color: #ffe6f0">
+      <%= @error %>
+	</div><br>
+	<% end %>
+
+
+<div class="text-field">
+<%= form.label :num_guests, "Number of Guests: ", style: "width: 150px" %>
+  <%= form.number_field :num_guests, min: "1" %>
+</div>
+
+
+<br>
+
+
+<div class="text-field">
+<%= form.label :start_date, "Check In: ", style: "width: 150px" %>
+  <%= form.date_field :start_date %>
+</div>
+
+
+<br>
+
+
+<div class="text-field">
+<%= form.label :end_date, "Check Out: ", style: "width: 150px" %>
+  <%= form.date_field :end_date %>
+</div>
+
+
+<br>
+
+
+<div class="submit-field" align="center">
+<%= form.submit "Book now!", class: "btn btn-success", style: "font-weight:900" %>
+</div>
+
+<% end %>

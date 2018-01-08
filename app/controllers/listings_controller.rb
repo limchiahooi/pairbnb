@@ -31,6 +31,7 @@ class ListingsController < ApplicationController
 	  def show
 	  	#use singular @listing coz only create one listing
 	    @listing = Listing.find(params[:id])
+	    @reservation = @listing.reservations.new
 	     # @reservation = @listing.reservations.new
 	    
 	end

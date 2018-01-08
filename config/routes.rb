@@ -19,17 +19,26 @@ root "listings#index"
 
 
 
-resources :users do
-   resources :listings
-end
+
 
    resources :users
    resources :listings
+   resources :reservations, only: [:destroy]
 
 
- resources :listings do
-    resources :image, :only => [:create, :destroy] # support #create and #destroy
-  end
+    resources :users do
+       resources :listings
+    end
+
+     resources :listings do
+        resources :image, :only => [:create, :destroy] # support #create and #destroy
+      end
+
+
+     resources :listings do
+       resources :reservations, only: [:create]
+    end
+
 
 
 

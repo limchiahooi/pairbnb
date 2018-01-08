@@ -1,7 +1,16 @@
-<div class="col-md-12">
+
+
+ <div class="col-md-8 col-md-offset-2" >
   <li class="list-group-item">
 
 <h1><%= @listing.name %></h1>
+
+<br>
+<div class="well"
+<div style="float: right; width: 400px ">
+<%= render "reservations/form" %>
+</div>
+<br>
 
 
 <p>Location: <%= @listing.address %>, <%= @listing.zipcode %>, <%= @listing.city %>, <%= @listing.country %></p>
@@ -57,8 +66,8 @@ There are <%= @listing.image.count %> photos uploaded for this listing. </p>
     <div class="item active">
     <%= image_tag @listing.image.first, class: "img-responsive center-block", style: "width:100%; height:100%;" %>
     </div>
-    <% @listing.image.shift %>
-    <% @listing.image.each do |image| %>
+    
+    <% @listing.image[1..-1].each do |image| %>
     <div class="item">
       <%= image_tag image, class: "img-responsive center-block", style: "width:100%; height:100%;" %>
     </div>
@@ -91,7 +100,7 @@ There are <%= @listing.image.count %> photos uploaded for this listing. </p>
 
 
 <p>
-<% @listing = Listing.find(params[:id]) %>
+
 <% @listing.image.each do |image| %>
 <%= image_tag image, class: "img-responsive", style: "border-radius: 3px;"  %><br>
 

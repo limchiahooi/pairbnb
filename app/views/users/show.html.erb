@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-8 col-md-offset-2" >
 <div class="list-group">
   <div class="list-group-item">
 
@@ -55,6 +55,56 @@ No profile photo available.</p>
 
 
 
+
+
+<% if signed_in? %>
+
+
+
+<% if current_user && ((current_user.id == @user.id) || current_user.superadmin?) %>
+
+<div class="list-group-item">
+
+<h3>My Reservations</h3>
+<p>As at <%= Date.today.strftime("%d %B %Y") %>, there are <%= @reservations.count %> reservations.</p>
+
+
+
+<div class="table-responsive">
+<table class="table table-bordered" style="text-align: center;background-color: #f2f2f2;">
+	
+<tr>
+<td>Listing title</td>
+<td>Start date</td>
+<td>End date</td>
+<td>Number of nights</td>
+<td>Number of guest</td>
+<td>Total price</td>
+<td>Cancel booking</td>
+</tr>
+
+
+<% @reservations.each do |reservation| %>
+<tr>
+<td><%= link_to reservation.listing.name, reservation.listing  %></td>
+<td><%= reservation.start_date %></td>
+<td><%= reservation.end_date %></td>
+<td><%= (reservation.end_date - reservation.start_date).to_i %></td>
+<td><%= reservation.num_guests %></td>
+<td>RM<%= number_with_delimiter(reservation.total_price, :delimiter => ',') %></td>
+<td><%= link_to "Cancel booking", reservation, method: :delete, data: { confirm: "Are you sure you want to cancel this reservation?" } %></td>
+
+</tr>
+<% end %>
+
+</table>
+
+
+</div>
+<br></div>
+
+<% end %>
+<% end %>
 
 
 
