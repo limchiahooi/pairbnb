@@ -66,7 +66,7 @@ No profile photo available.</p>
 <div class="list-group-item">
 
 <h3>My Reservations</h3>
-<p>As at <%= Date.today.strftime("%d %B %Y") %>, there are <%= @reservations.count %> reservations.</p>
+<p>As at <%= Date.today.strftime("%d %B %Y") %>, you have made <%= @reservations.count %> reservations.</p>
 
 
 
@@ -81,6 +81,7 @@ No profile photo available.</p>
 <td>Number of guest</td>
 <td>Total price</td>
 <td>Cancel booking</td>
+<td>Payment</td>
 </tr>
 
 
@@ -93,6 +94,12 @@ No profile photo available.</p>
 <td><%= reservation.num_guests %></td>
 <td>RM<%= number_with_delimiter(reservation.total_price, :delimiter => ',') %></td>
 <td><%= link_to "Cancel booking", reservation, method: :delete, data: { confirm: "Are you sure you want to cancel this reservation?" } %></td>
+<td><% if reservation.status="unpaid" %>
+	<%= link_to "Pay", "#"  %>
+	<% else %>
+	<p>Paid</p>
+	<% end %>
+</td>
 
 </tr>
 <% end %>
@@ -113,34 +120,85 @@ No profile photo available.</p>
 
 <h3>My Listings</h3>
 
-
-
-<div align= "right" style="margin: 0px 15px 0px 0px">
-
-    <%= will_paginate @filter %>
-    </div>
+<p>As at <%= Date.today.strftime("%d %B %Y") %>, you have created <%= @listings.count %> listings.</p>
 
 
 
-	<% @user.listings.each_slice(4) do |listings| %>
-		<div class='row'>
-			<% listings.each do |listing| %>
-		  		<div class="col-md-3">
+
+	
+			<% @listings.each do |listing| %>
+		  		<div class="well">
 		      
-					<div class="well">
+					<h4><%= link_to listing.name, user_listing_path(listing.user, listing) %></h4>
 
 						<p><%= image_tag listing.image[0].to_s, class: "img-responsive", style: "border-radius: 3px; " %></p>
 
-						<h4><%= link_to listing.name, user_listing_path(listing.user, listing) %></h4>
+						
 						<p>Location: <%= listing.country %>, <%= listing.city %></p>
 						<p>Description: <%= listing.description %></p>
 
-					</div>
-				</div>
-			<% end %>
-		</div>
+
+
+
+
+
+
+<table class="table table-bordered" style="text-align: center;background-color: white;">
+	
+<tr>
+<td>Booked by</td>
+<td>Start date</td>
+<td>End date</td>
+<td>Number of nights</td>
+<td>Number of guest</td>
+<td>Total price</td>
+<td>Payment</td>
+</tr>
+
+<% if listing.reservations.present? %>
+
+
+
+<% listing.reservations.each do |reservation| %>
+<tr>
+<td><%= link_to reservation.user.email, reservation.user  %></td>
+<td><%= reservation.start_date %></td>
+<td><%= reservation.end_date %></td>
+<td><%= (reservation.end_date - reservation.start_date).to_i %></td>
+<td><%= reservation.num_guests %></td>
+<td>RM<%= number_with_delimiter(reservation.total_price, :delimiter => ',') %></td>
+</td>
+<td><% if reservation.status="unpaid" %>
+	<p>Pending</p>
+	<% else %>
+	<p>Paid</p>
 	<% end %>
-</div>
+</td>
+</tr>
+<% end %>
+
+
+<% else %>
+<tr><td colspan="7">There is no booking for this listing yet.</td></tr>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+</table>
+
+
+
+
+			</div>
+		<br>
+	<% end %>
 
 
 </div>
@@ -150,6 +208,8 @@ No profile photo available.</p>
 
 
 
+
+</div>
 
 
 

@@ -31,7 +31,7 @@ gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
-
+gem 'braintree'
 
 
 # Use CoffeeScript for .coffee assets and views

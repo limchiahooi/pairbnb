@@ -13,7 +13,8 @@ class Reservation < ApplicationRecord
   validate :check_max_guests
   validate :check_num_guests
   
-
+  enum status: [:unpaid, :paid]
+  # same as enum verification: { unpaid: 0, paid: 1 }
 
   
 
