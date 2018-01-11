@@ -7,8 +7,13 @@
 
 
 
+
+
+
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
 
 
 
@@ -32,11 +37,15 @@
     <% end -%>
   </div>-->
 
-  
+  <% flash.each do |key, value| %>
 
-<div class="col-md-12">
-<%= flash_messages %>
-</div>
+<div style="width: 98%; margin: 0 auto">
+      <div class="alert alert-<%= key %> alert-dismissable fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <%= value %>
+      </div></div>
+<% end %>
+
+
 
 
 

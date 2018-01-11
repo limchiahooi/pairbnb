@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
 
-root "listings#index"
+  
+
+  root "listings#index"
 
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
@@ -23,8 +25,12 @@ root "listings#index"
 
    resources :users
    resources :listings
-   resources :reservations, only: [:destroy]
-
+   resources :reservations, only: [:destroy] do
+      member do
+        get 'braintree/new'
+        post 'braintree/checkout'
+      end
+    end
 
     resources :users do
        resources :listings

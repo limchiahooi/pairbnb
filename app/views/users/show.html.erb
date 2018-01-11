@@ -93,9 +93,10 @@ No profile photo available.</p>
 <td><%= (reservation.end_date - reservation.start_date).to_i %></td>
 <td><%= reservation.num_guests %></td>
 <td>RM<%= number_with_delimiter(reservation.total_price, :delimiter => ',') %></td>
+
 <td><%= link_to "Cancel booking", reservation, method: :delete, data: { confirm: "Are you sure you want to cancel this reservation?" } %></td>
-<td><% if reservation.status="unpaid" %>
-	<%= link_to "Pay", "#"  %>
+<td><% if reservation.status=="unpaid" %>
+	<%= link_to "Pay",  braintree_new_reservation_path(reservation.id), 'data-turbolinks' => false %>
 	<% else %>
 	<p>Paid</p>
 	<% end %>
@@ -136,7 +137,7 @@ No profile photo available.</p>
 						
 						<p>Location: <%= listing.country %>, <%= listing.city %></p>
 						<p>Description: <%= listing.description %></p>
-
+<p>Booking details: </p>
 
 
 
@@ -168,7 +169,7 @@ No profile photo available.</p>
 <td><%= reservation.num_guests %></td>
 <td>RM<%= number_with_delimiter(reservation.total_price, :delimiter => ',') %></td>
 </td>
-<td><% if reservation.status="unpaid" %>
+<td><% if reservation.status=="unpaid" %>
 	<p>Pending</p>
 	<% else %>
 	<p>Paid</p>
