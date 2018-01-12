@@ -11,6 +11,9 @@ class ReservationsController < ApplicationController
 if signed_in?
 
     if @reservation.save
+
+      ReservationJob.perform_later(@reservation)
+
       redirect_to current_user
     else 
       @error = @reservation.errors.full_messages.first

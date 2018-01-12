@@ -20,9 +20,7 @@ class UsersController < ApplicationController
 			redirect_to root_url
 		else 
 			flash[:alert] = @user.errors.full_messages.first
-			# @error = "Unable to sign up"
-			# flash[:notice] = "Unable to sign up"
-			# flash.now.notice = "sasassa"
+			
 			redirect_to sign_up_path
 			
 		end

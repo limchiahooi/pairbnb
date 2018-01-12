@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
 
 
-   resources :users
+   
    resources :listings
    resources :reservations, only: [:destroy] do
       member do

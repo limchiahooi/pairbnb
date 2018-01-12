@@ -8,6 +8,15 @@
   <p>It's free and always will be.</p>
   
 <br>
+<% if @user.errors.present? %>
+  The following error occured
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div align="center">
   <%= form_for @user, html: { multipart: true } do |form| %>
     <%= render partial: '/users/form', object: form %>

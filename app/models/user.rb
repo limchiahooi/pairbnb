@@ -9,7 +9,7 @@ enum role: [:customer, :moderator, :superadmin]
 
  has_many :authentications, dependent: :destroy
  has_many :listings, dependent: :destroy
- has_many :reservations
+ has_many :reservations, dependent: :destroy
 
 
   mount_uploader :avatar, AvatarUploader
