@@ -22,6 +22,21 @@
     end
 
 
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
     def url_after_destroy
       root_url
     end

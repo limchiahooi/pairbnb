@@ -16,10 +16,10 @@ class UsersController < ApplicationController
 
 		if @user.save
 			sign_in @user
-			flash[:success] = "Welcome to Pairbnb"
+			flash[:success] = "Welcome to Facebnb"
 			redirect_to root_url
 		else 
-			flash[:alert] = @user.errors.full_messages.first
+			flash[:danger] = @user.errors.full_messages.first
 			
 			redirect_to sign_up_path
 			

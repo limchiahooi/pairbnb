@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/" style="color: white"><b>Pairbnb</a></b>
+      <a class="navbar-brand" href="/" style="color: white"><b>Facebnb</a></b>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -74,7 +74,7 @@
        <li><%= link_to "Sign in with Facebook", "/auth/facebook", Style: "color:white" %></li>
 
 
-       <li> <%= link_to "Register a new account", sign_up_path, Style: "color:white" %></li>
+       <li> <%= link_to "Register a new account", sign_up_path, Style: "color:white", 'data-turbolinks' => false %></li>
         
 <% end -%>
 
