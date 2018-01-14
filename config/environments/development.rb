@@ -68,7 +68,8 @@ config.action_mailer.smtp_settings = {
 :enable_starttls_auto => true
 }
 
-
+ # Root URL for mailers.
+config.action_mailer.default_url_options = { :host => "localhost:3000" }
 
 
 
