@@ -16,11 +16,11 @@ enum role: [:customer, :moderator, :superadmin]
 
 
 
-    def self.create_with_auth_and_hash(authentication, auth_hash)
-      user = self.create!(
-       password: SecureRandom.hex(10),
-       email: auth_hash["extra"]["raw_info"]["email"]
-      )
+    def self.create_with_auth_and_hash(authentication,auth_hash)
+      user = self.create! do |u|
+        u.password = SecureRandom.hex(10)
+        u.email = auth_hash["extra"]["raw_info"]["email"]
+      end
       user.authentications << authentication
       return user
     end
