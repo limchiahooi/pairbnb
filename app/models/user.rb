@@ -26,8 +26,8 @@ enum role: [:customer, :moderator, :superadmin]
     end
 
     # grab fb_token to access Facebook for user data
-    def fb_token
-      x = self.authentications.find_by(provider: 'facebook')
+      def fb_token
+       x = self.authentications.where(:provider => :facebook).first
       return x.token unless x.nil?
-    end
+      end
  end
