@@ -35,6 +35,12 @@ gem 'braintree'
 gem 'sidekiq'
 
 
+
+# Use fog to upload images to AWS S3
+gem 'fog-aws'
+
+
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Use jquery as the JavaScript library
