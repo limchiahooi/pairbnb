@@ -137,6 +137,13 @@ No profile photo available.</p>
 						
 						<p>Location: <%= listing.country %>, <%= listing.city %></p>
 						<p>Description: <%= listing.description %></p>
+
+
+
+<% if current_user.id == @user.id %>
+
+
+
 <p>Booking details: </p>
 
 
@@ -193,6 +200,8 @@ No profile photo available.</p>
 
 
 </table>
+<% end %>
+
 
 
 
