@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@listings = Listing.where(user_id: @user).order(id: :desc).paginate(:page => params[:page], :per_page => 4) 
+		@listings = Listing.where(user_id: @user).order(id: :desc) 
 		@reservations = @user.reservations
 		render 'users/show'
 	end
