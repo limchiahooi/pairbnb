@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
 
 
 	def index
-		@listings = Listing.all.order(id: :desc).paginate(:page => params[:page], :per_page => 12)
+		@listings = Listing.all.order(id: :desc).paginate(:page => params[:page], :per_page => 8)
 		#use plural @listings coz index shows all listings
 	end
 
