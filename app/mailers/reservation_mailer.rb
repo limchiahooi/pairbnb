@@ -7,7 +7,7 @@ default from: "from@example.com"
     @host = host
     @reservation_id = reservation_id
     
-    @url  = "https://facebnb.herokuapp.com/user/#{@host.id}"
+    @url  = "https://facebnb.herokuapp.com/users/#{@host.id}"
     mail(to: @host.email, subject: 'New Reservation for your Listing!')
 end
 
