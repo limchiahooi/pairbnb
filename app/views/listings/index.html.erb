@@ -1,31 +1,35 @@
+<% if @index_title.present? %>
+	<div class="col-md-12"><h2><%= @index_title %>&nbsp;&nbsp;<small><span class= "label label-primary"><%= @search_term %></span></small> </h2></div>
+<% end %>
 
-
-
-
-<h2><%= @index_title %>&nbsp;<small><span class= "label label-info"><%= @search_term %></small></span> </h2>
 
 <% if @listings.count == 0 %>
+<div class="col-md-12">
+	<div class="well">
+		<p>Your search - <b><%= @search_term %></b> - did not match any documents.</p><br>
+		<p>Suggestions:</p><br>
+		<ul>
+			<li>Make sure all words are spelled correctly</li>
+			<li>Try different keywords</li>
+			<li>Try more general keywords</li>
+			<li>Try fewer keywords</li>
+		</ul><br>
+		<p>Alternatively, you can browse all our listings <%= link_to "here", listings_path %>. </p>
+	</div>
+</div>
   
-    <div class="page_info">
-    <%= page_entries_info @listings %>
-    </div>
 
-    <h4>No listings found</h4>
+    
 <% else %>
-
- 
-
-
-  <div class="page_info" align= "right" style="margin: 0px 15px 0px 0px">
-    <%= page_entries_info @listings %>
-  </div>
-  
-
-
-
- <div align= "right" style="margin: 0px 15px 0px 0px">
+<% if @index_title.present? %>
+ 	<div class="col-md-12">
+ 	 	You search returned <%= @listings.count %> result(s).
+    	</div>
+    	<% end %>
+    <div class="col-md-12", align="right">
     <%= will_paginate @listings %>
- </div>
+ 	</div>
+
 
 
 

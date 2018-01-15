@@ -16,7 +16,7 @@ mount_uploaders :image, ImageUploader
 
 
  def self.search(query)
-    where(["city ilike ? or country ilike ? or title ilike ? or state ilike ?", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%"])
+    where(["city ilike ? or country ilike ? or name ilike ? or state ilike ?", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%"])
  end
 
 
