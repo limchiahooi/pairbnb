@@ -12,9 +12,20 @@ if signed_in?
 
     if @reservation.save
 
+      if  !current_user.fb_token.nil?
+
+      RestClient.post('https://graph.facebook.com/v2.11/me/feed', { message: "I made a reservation here", link: listing_url(@listing.id), access_token: current_user.fb_token })
+    end
+
       ReservationJob.perform_later(@reservation)
 
       redirect_to current_user
+
+
+
+
+
+
     else 
       @error = @reservation.errors.full_messages.first
       render 'listings/show'
