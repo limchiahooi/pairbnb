@@ -38,7 +38,7 @@
 
       
 
-<form class="navbar-form navbar-left" role="search">
+<div class="navbar-form navbar-left" role="search">
  <%= form_tag(listings_path, method: "get", id: "search-form", enforce_utf8: false) do %>
         <div class="form-group">
             <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Enter a location" %>
@@ -46,7 +46,7 @@
             <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
         
 <% end %>
-</form>
+</div>
 
 
 

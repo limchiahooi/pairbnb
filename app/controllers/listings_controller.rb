@@ -10,6 +10,7 @@ class ListingsController < ApplicationController
 				@search_term = "'#{params[:search]}'"
 
 				@listings = Listing.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 8)
+				
 		else
 				
 				@listings = Listing.all.order(id: :desc).paginate(:page => params[:page], :per_page => 8)
