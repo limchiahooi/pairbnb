@@ -40,12 +40,12 @@
 
 
   <%= form_tag(listings_path, method: "get", id: "search-form", enforce_utf8: false) do %>
-        <div class="input-group">
+        
           <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Enter a location", style: "width:150px" %>
-          <div class="input-group-btn">
+          
               <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span>Search</button>
-          </div>
-        </div>
+          
+       
   <% end %>
 
 
