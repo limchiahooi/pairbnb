@@ -14,4 +14,11 @@ has_many :reservations, dependent: :destroy
 mount_uploaders :image, ImageUploader
 
 
+
+ def self.search(query)
+    where(["city ilike ? or country ilike ? or title ilike ? or state ilike ?", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%"])
+ end
+
+
+
 end

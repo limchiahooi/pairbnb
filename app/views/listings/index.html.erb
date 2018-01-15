@@ -1,8 +1,33 @@
 
 
+
+
+<h2><%= @index_title %>&nbsp;<small><span class= "label label-info"><%= @search_term %></small></span> </h2>
+
+<% if @listings.count == 0 %>
+  
+    <div class="page_info">
+    <%= page_entries_info @listings %>
+    </div>
+
+    <h4>No listings found</h4>
+<% else %>
+
+ 
+
+
+  <div class="page_info" align= "right" style="margin: 0px 15px 0px 0px">
+    <%= page_entries_info @listings %>
+  </div>
+  
+
+
+
  <div align= "right" style="margin: 0px 15px 0px 0px">
     <%= will_paginate @listings %>
  </div>
+
+
 
 <div class="col-md-12">
 
@@ -27,7 +52,7 @@
 </div>
 
 
-</div>
+<% end %>
 
 
 

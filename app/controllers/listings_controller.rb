@@ -2,8 +2,19 @@ class ListingsController < ApplicationController
 
 
 	def index
-		@listings = Listing.all.order(id: :desc).paginate(:page => params[:page], :per_page => 8)
+		# @listings = Listing.all.order(id: :desc).paginate(:page => params[:page], :per_page => 8)
 		#use plural @listings coz index shows all listings
+
+		if params[:search]
+				@index_title = "All search results for:"
+				@search_term = "'#{params[:search]}'"
+
+				@listings = Listing.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 8)
+		else
+				
+				@listings = Listing.all.order(id: :desc).paginate(:page => params[:page], :per_page => 8)
+		end
+
 	end
 
 
