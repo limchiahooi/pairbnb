@@ -27,17 +27,25 @@
 
  
 
-  <% flash.each do |key, value| %>
+  
 
+
+<% flash.each do |key, value| %>
+<% if key == "notice" %>
 <div style="width: 98%; margin: 0 auto">
+<div class="alert alert-danger alert-dismissable fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <%= value %>
+      </div></div>
+
+<% else %>
+
+
+  <div style="width: 98%; margin: 0 auto">
       <div class="alert alert-<%= key %> alert-dismissable fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <%= value %>
       </div></div>
 <% end %>
-
-
-
-
+<% end %>
 
 
 
