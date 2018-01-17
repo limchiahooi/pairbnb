@@ -49,7 +49,7 @@
 
   <div class="other-links">
     <% if Clearance.configuration.allow_sign_up? %>
-      <%= link_to "New to Pairbnb? Sign up for a free acount now!", sign_up_path %>
+      <%= link_to "New to Pairbnb? Sign up for a free acount now!", sign_up_path, 'data-turbolinks' => false %>
     <% end %>
 
     <br>
