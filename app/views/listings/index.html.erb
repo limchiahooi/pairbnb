@@ -1,74 +1,163 @@
-<% if @index_title.present? %>
-	<div class="col-md-12"><h2><%= @index_title %>&nbsp;&nbsp;<small><span class= "label label-primary"><%= @search_term %></span></small> </h2></div>
-<% end %>
+<div class='container-fluid' style="min-height: 100%">
 
 
-<% if @listings.count == 0 %>
-<div class="col-md-12">
-	<div class="well">
-		<p>Your search - <b><%= @search_term %></b> - did not match any documents.</p><br>
-		<p>Suggestions:</p><br>
-		<ul>
-			<li>Make sure all words are spelled correctly</li>
-			<li>Try different keywords</li>
-			<li>Try more general keywords</li>
-			<li>Try fewer keywords</li>
-		</ul><br>
-		<p>Alternatively, you can browse all our listings <%= link_to "here", listings_path %>. </p>
-	</div>
-</div>
-  
-
-    
-<% else %>
-<% if @index_title.present? %>
- 	<div class="col-md-12">
- 	 	Your search returned <%= @listings.count %> result(s).
-    	</div>
-    	<% end %>
-    <div class="col-md-12", align="right">
-    <%= will_paginate @listings %>
- 	</div>
-
-
-
-
-<div class="col-md-12">
-
-	<% @listings.each_slice(4) do |listings| %>
-		<div class='row'>
-			<% listings.each do |listing| %>
-		  		<div class="col-md-3">
-		      
-					<div class="well">
-
-						<p><%= image_tag listing.image[0].to_s, class: "img-responsive", style: "border-radius: 3px; " %></p>
-
-						<h4><%= link_to listing.name, user_listing_path(listing.user, listing) %></h4>
-						<p>Location: <%= listing.country %>, <%= listing.state %>, <%= listing.city %></p>
-						<p>Description: <%= listing.description %></p>
-
-					</div>
-				</div>
-			<% end %>
+	<% if @index_title.present? %>
+		<div class="col-md-12">
+			<h2><%= @index_title %>&nbsp;&nbsp;<small><span class= "label label-primary"><%= @search_term %></span></small> </h2>
 		</div>
+
 	<% end %>
+
+
+	<% if @listings.count == 0 %>
+	<div class="col-md-12">
+		<div class="well">
+			<p>Your search - <b><%= @search_term %></b> - did not match any documents.</p><br>
+			<p>Suggestions:</p><br>
+			<ul>
+				<li>Make sure all words are spelled correctly</li>
+				<li>Try different keywords</li>
+				<li>Try more general keywords</li>
+				<li>Try fewer keywords</li>
+			</ul><br>
+			<p>Alternatively, you can browse all our listings <%= link_to "here", listings_path %>. </p><br>
+
+			
+<p><b>Recommended for you</b></p>
+			
+			      
+						
+
+							<p><%= image_tag Listing.last.image[0].to_s, class: "img-responsive", style: "border-radius: 3px; width: 300px" %></p>
+
+							<h4><%= link_to Listing.last.name, listing_path(Listing.last) %></h4>
+							<p>Location: <%= Listing.last.country %>, <%= Listing.last.state %>, <%= Listing.last.city %></p>
+							<p>Description: <%= Listing.last.description %></p>
+
+						
+			
+
+			
+
+		</div>
+	</div>
+	  
+
+
+
+
+	    
+	<% else %>
+	<% if @index_title.present? %>
+	 	<div class="col-md-12">
+	 	 	Your search returned <%= @listings.count %> result(s).
+	    	</div>
+	    	<% end %>
+	    <div class="col-md-12", align="right">
+	    <%= will_paginate @listings %>
+	 	</div>
+
+
+
+
+	<div class="col-md-12">
+
+		<% @listings.each_slice(4) do |listings| %>
+			<div class='row'>
+				<% listings.each do |listing| %>
+			  		<div class="col-md-3">
+			      
+						<div class="well">
+
+							<p><%= image_tag listing.image[0].to_s, class: "img-responsive", style: "border-radius: 3px; " %></p>
+
+							<h4><%= link_to listing.name, user_listing_path(listing.user, listing) %></h4>
+							<p>Location: <%= listing.country %>, <%= listing.state %>, <%= listing.city %></p>
+							<p>Description: <%= listing.description %></p>
+
+						</div>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+
+
+	<% end %>
+
+
+
+	      
+	   
+
+
+
+	<% if false %>
+	code to comment
+
+	<div class="footer">
+	<%= paginate @listings %>
+	</div>
+	<% end %>
+
+
+
 </div>
 
 
-<% end %>
 
 
 
+
+  <div class="container-fluid" style="background-color:#8b9dc3; margin-top: 50px">
       
-   
+
+      <div class="row">
+
+        <div class="col-sm-4">
+            <h4 class="title">Facebnb</h4>
+            <p>Facebnb is an Malaysian company which hosts an online marketplace and hospitality service, for people to lease or rent short-term lodging including vacation rentals, apartment rentals, homestays, hostel beds, or hotel rooms. </p>
+            <ul class="social-icon">
+            <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="#" class="social"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="#" class="social"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" class="social"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+            <a href="#" class="social"><i class="fa fa-google" aria-hidden="true"></i></a>
+            <a href="#" class="social"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+            </ul>
+        </div>
 
 
+        <div class="col-sm-4">
+            
+            
+                <h4 class="title">Follow Us</h4> 
+                <ul>       
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+            
+        </div>
+        
 
-<% if false %>
-code to comment
+        <div class="col-sm-4">
+            <h4 class="title">Contact Us</h4>
+            <p><b>Address:</b> AG-7, Glomac Damansara, Jalan Damansara, Tmn Tun Dr Ismail, 60000</p>
+            <p><b>Phone: </b>03-9212 8158</p>
+            <p><b>Email: </b>info@facebnb.com</p>
+            <p></p>
+            
+        </div>
 
-<div class="footer">
-<%= paginate @listings %>
-</div>
-<% end %>
+      </div>
+
+    <hr>
+        
+    <div class="row text-center"> © 2018. Coded by Lim Chia Hooi</div>
+    
+        
+        
+    
+ </div>

@@ -1,4 +1,4 @@
-
+<div class='container-fluid' style="min-height: 100%">
 
 <div class="col-md-12">
   <li class="list-group-item">
@@ -14,7 +14,7 @@
   <%= form_for :password, url: passwords_path do |form| %>
     <div class="text-field">
       <%= form.label :email %>
-      <%= form.text_field :email, type: 'email' %>
+      <%= form.text_field :email, type: 'email', required: true %>
     </div>
 
 <br>
@@ -28,4 +28,7 @@
 
 
 </li>
+</div>
+
+
 </div>
