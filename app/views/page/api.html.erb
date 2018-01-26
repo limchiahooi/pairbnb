@@ -1,0 +1,35 @@
+<div class="jumbotron text-center">
+    <h1>Welcome!</h1>
+    <% @weathers.each do |w| %>
+        <div style='border: 1px solid; display: inline-block;'>
+            <p>Date:
+                <%= w['applicable_date'] %>
+            </p>
+            <p>Weather:
+                <%= w['weather_state_name'] %>
+                    <%= image_tag "https://www.metaweather.com/static/img/weather/#{w['weather_state_abbr']}.svg" %>
+            </p>
+        </div>
+        <% end %>
+</div>
+<br>
+
+
+
+<div class="jumbotron text-center">
+    <h2>Talaikis</h2>
+    <p>Quote of the day: <%= @quote %></p>
+    <p>By: <%= @author %></p>
+    <p>Category: <%= @cat %></p>
+          
+</div>
+
+
+
+<div class="jumbotron text-center">
+    <h2>Quotes on Design</h2>
+    <p>Quote of the day: <%= @title %></p>
+    <p>By: <%= @content %></p>
+    
+          
+</div>
